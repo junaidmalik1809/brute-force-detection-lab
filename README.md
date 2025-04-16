@@ -1,10 +1,10 @@
-# 🔐 Brute-Force Detection Lab: Hydra + Snort + Wireshark
+# Brute-Force Detection Lab: Hydra + Snort + Wireshark
 
 This project simulates a brute-force attack on a web login form and demonstrates how to detect and analyze it using Snort IDS and Wireshark.
 
 ---
 
-## 🧪 Lab Setup
+##  Lab Setup
 
 - **pfSense**: Configured as a firewall and IDS
 - **Snort**: Installed on pfSense, configured to detect brute-force and web scanning
@@ -14,16 +14,18 @@ This project simulates a brute-force attack on a web login form and demonstrates
 
 ---
 
-## 🚨 Attack Simulation
+##  Attack Simulation
 
-### 🔨 Tools Used
+### Tools Used
 - **Hydra**: For brute-forcing login form credentials
 - **Nmap**: For initial port scanning
 - **Rockyou.txt**: Common password list
 
-### 💥 Scenario
+### Scenario
 
 1. Login portal hosted on Nginx using PHP (`index.php`)
 2. Hydra brute-forces login:
    ```bash
    hydra -l admin -P rockyou.txt 192.168.1.10 http-post-form "/index.php:username=^USER^&password=^PASS^:Login Failed" -V
+3. Snort (on pfSense) detects and logs the attack
+4.Wireshark captures POST payloads on lo interface and shows username/password attempts
