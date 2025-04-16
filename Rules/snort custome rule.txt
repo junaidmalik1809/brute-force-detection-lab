@@ -1,0 +1,4 @@
+## Snort-Custom-Rule
+
+alert tcp any any -> $HOME_NET 80 (msg:"Hydra Brute Force Attempt - POST"; flow:to_server,established; content:"POST"; http_method;
+content:"username="; content:"password="; classtype:attempted-admin; sid:1000013; rev:1;)
