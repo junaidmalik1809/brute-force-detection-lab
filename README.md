@@ -19,7 +19,7 @@ This project simulates a brute-force attack on a web login form and demonstrates
 ### Tools Used
 - **Hydra**: For brute-forcing login form credentials
 - **Nmap**: For initial port scanning
-- **Rockyou.txt**: Common password list
+- **Rockyou.txt** && **minilist.txt**: Common/sample password list
 
 ### Scenario
 
