@@ -1,0 +1,14 @@
+After launching hydra brute force attack, it was time to capture live traffic on ip address : 192.168.1.10
+which was being used by nginx server to provide me login details (index.php).
+
+I launched wireshark from bash, then ran hydra command :
+
+hydra -l admin -P /home/vboxuser/minilists.txt -t 1 -W 3 192.168.1.10 http-post-form 
+"/index.php:username=^USER^&password=^PASS^:F=Invalid username or password" -V
+
+Navigated back to wireshark, searched for HTTP post traffic by running below command in filter:
+
+tcp.len > 0 && tcp.dstport == 80 && ip.addr == 192.168.1.10
+
+Finally started capturing live traffic. Through port 80 and source and destination ip address: 192.168.1.10, 
+I captured number of user login attempts and their password details.
